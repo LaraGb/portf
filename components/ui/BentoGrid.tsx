@@ -66,11 +66,14 @@ export const BentoGridItem = ({
   };
 
   const handleCopy = () => {
-    const text = "laragabrieleoliv@gmail.com";
-    navigator.clipboard.writeText(text);
-    setCopied(true);
+    if (typeof document !== "undefined") {
+      const text = "laragabrieleoliv@gmail.com";
+      navigator.clipboard.writeText(text);
+      setCopied(true);
+    } else {
+      console.log("Clipboard API is not supported in this environment.");
+    }
   };
-
   return (
     <div
       className={cn(
